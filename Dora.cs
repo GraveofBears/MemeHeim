@@ -17,7 +17,7 @@ namespace MemeHeim
     public class MemeHeim : BaseUnityPlugin
     {
         private const string ModName = "MemeHeim";
-        private const string ModVersion = "0.0.5";
+        private const string ModVersion = "0.0.6";
         private const string ModGUID = "org.bepinex.plugins.memeheim";
 
         private static readonly ConfigSync configSync = new(ModName) { DisplayName = ModName, CurrentVersion = ModVersion, MinimumRequiredVersion = ModVersion };
@@ -116,7 +116,7 @@ namespace MemeHeim
                 BiomeArea = Heightmap.BiomeArea.Median,
                 SpawnChance = 1,
                 MaxSpawned = 1,
-                SpawnInterval = 3000,
+                SpawnInterval = 6000,
                 SpawnDistance = 10,
                 SpawnRadiusMin = 35,
                 SpawnRadiusMax = 35,
@@ -158,6 +158,9 @@ namespace MemeHeim
 				Biome = Heightmap.Biome.BlackForest,
                 CanBeTamed = true,
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
+                FedDuration = 600,
+                TamingTime = 1200,
+                CreatureFaction = Character.Faction.ForestMonsters,
                 CanSpawn = true,
                 SpawnChance = 15,
                 GroupSize = new Range(1, 2),
@@ -177,6 +180,9 @@ namespace MemeHeim
                 Biome = Heightmap.Biome.Plains,
                 CanBeTamed = true,
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
+                FedDuration = 600,
+                TamingTime = 1200,
+                CreatureFaction = Character.Faction.PlainsMonsters,
                 CanSpawn = true,
                 SpawnChance = 25,
                 GroupSize = new Range(1, 2),
@@ -197,6 +203,9 @@ namespace MemeHeim
                 Biome = Heightmap.Biome.Meadows,
                 CanBeTamed = true,
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
+                FedDuration = 600,
+                TamingTime = 1200,
+                CreatureFaction = Character.Faction.ForestMonsters,
                 CanSpawn = true,
                 SpawnChance = 25,
                 GroupSize = new Range(1, 4),
@@ -216,6 +225,9 @@ namespace MemeHeim
                 Biome = Heightmap.Biome.Swamp,
                 CanBeTamed = true,
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
+                FedDuration = 600,
+                TamingTime = 1200,
+                CreatureFaction = Character.Faction.ForestMonsters,
                 CanSpawn = true,
                 SpawnChance = 15,
                 GroupSize = new Range(1, 2),
@@ -235,6 +247,9 @@ namespace MemeHeim
                 Biome = Heightmap.Biome.Mountain,
                 CanBeTamed = true,
                 FoodItems = "ShocklateSmoothie, Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
+                FedDuration = 600,
+                TamingTime = 1200,
+                CreatureFaction = Character.Faction.MountainMonsters,
                 CanSpawn = true,
                 SpawnChance = 15,
                 GroupSize = new Range(1, 2),
@@ -254,6 +269,9 @@ namespace MemeHeim
                 Biome = Heightmap.Biome.Mistlands,
                 CanBeTamed = true,
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
+                FedDuration = 600,
+                TamingTime = 1200,
+                CreatureFaction = Character.Faction.MistlandsMonsters,
                 CanSpawn = true,
                 SpawnChance = 15,
                 GroupSize = new Range(1, 2),
@@ -273,6 +291,9 @@ namespace MemeHeim
                 Biome = Heightmap.Biome.Mistlands,
                 CanBeTamed = true,
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
+                FedDuration = 600,
+                TamingTime = 1200,
+                CreatureFaction = Character.Faction.Dverger,
                 CanSpawn = true,
                 SpawnChance = 15,
                 GroupSize = new Range(3, 4),
