@@ -47,8 +47,9 @@ namespace MemeHeim
         {
             Localizer.Load();
 
+            GameObject fx_meme_death = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "fx_meme_death");
 
-            GameObject sfx_dora_alerted = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_dora_alerted"); //register projectile
+            GameObject sfx_dora_alerted = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_dora_alerted"); 
             GameObject sfx_dora_death = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_dora_death");
             GameObject sfx_dora_idle = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_dora_idle");
             GameObject sfx_dora_swing = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_dora_swing");
@@ -144,6 +145,8 @@ namespace MemeHeim
                 Foldout = false
             });
 
+            GameObject vfx_mt_dew_drink = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "vfx_mt_dew_drink");
+            GameObject sfx_mt_dew_drink = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_mt_dew_drink");
             Item Meme_Mt_Dew = new("doradestroyer", "Meme_Mt_Dew");
             Item Meme_Snacks = new("doradestroyer", "Meme_Snacks");
 
