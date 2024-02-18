@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using System;
+using BepInEx;
 using BepInEx.Configuration;
 using CreatureManager;
 using HarmonyLib;
@@ -8,7 +9,6 @@ using ServerSync;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-
 
 
 namespace MemeHeim
@@ -76,12 +76,15 @@ namespace MemeHeim
             GameObject sfx_shrek_hit = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_shrek_hit");
             GameObject Shrek_attack = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Shrek_attack");
             GameObject vfx_shrek_hit = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "vfx_shrek_hit");
+            GameObject Shrek_Onion = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Shrek_Onion");
+            GameObject Shrek_Onion_Projectile = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Shrek_Onion_Projectile");
 
             GameObject sfx_pepe_alerted = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_alerted");
             GameObject sfx_pepe_attack = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_attack");
             GameObject sfx_pepe_death = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_death");
             GameObject sfx_pepe_hit = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_hit");
             GameObject Pepe_Attack = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Pepe_Attack");
+            GameObject sfx_pepe_idle = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_idle");
             GameObject Pepe_Projectile = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Pepe_Projectile");
             GameObject Pepe_Explosion = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Pepe_Explosion");
 
@@ -128,18 +131,19 @@ namespace MemeHeim
                 CanBeTamed = false,
                 CreatureFaction = Character.Faction.Boss,
                 CanSpawn = true,
-                SpawnChance = 1,
+                SpawnChance = 5,
                 GroupSize = new Range(1, 1),
-                CheckSpawnInterval = 6000,
+                CheckSpawnInterval = 3000,
                 SpecificSpawnTime = SpawnTime.Night,
-                SpecificSpawnArea = CreatureManager.SpawnArea.Everywhere,
+                SpecificSpawnArea = CreatureManager.SpawnArea.Edge,
                 ForestSpawn = Forest.Yes,
                 Maximum = 1
             };
             Ricardo.Drops["Meme_Mt_Dew"].Amount = new Range(1, 1);
-            Ricardo.Drops["Meme_Mt_Dew"].DropChance = 50f;
+            Ricardo.Drops["Meme_Mt_Dew"].DropChance = 100f;
             Ricardo.Drops["Meme_Snacks"].Amount = new Range(1, 1);
             Ricardo.Drops["Meme_Snacks"].DropChance = 50f;
+            Ricardo.Prefab.transform.Find("TriggerCollider").gameObject.AddComponent<DestroyOnCollision>();
 
 
             Creature Dora_The_Destroyer = new("doradestroyer", "Dora_The_Destroyer")           
@@ -216,11 +220,11 @@ namespace MemeHeim
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
                 FedDuration = 600,
                 TamingTime = 1200,
-                CreatureFaction = Character.Faction.ForestMonsters,
+                CreatureFaction = Character.Faction.Undead,
                 CanSpawn = true,
                 SpawnChance = 15,
                 GroupSize = new Range(1, 2),
-                CheckSpawnInterval = 1600,
+                CheckSpawnInterval = 1200,
                 SpecificSpawnTime = SpawnTime.Always,
                 Maximum = 1
             };
@@ -304,18 +308,26 @@ namespace MemeHeim
     }
 
     [HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.Start))]
-            static class MonsterAI_Start_Patch
+    static class MonsterAI_Start_Patch
+    {
+        static void Postfix(MonsterAI __instance)
         {
-            static void Postfix(MonsterAI __instance)
+            if (Player.m_localPlayer && __instance.gameObject.name.Contains("Ugandan_Knuckles") && __instance.m_nview.IsOwner())
             {
-                if (Player.m_localPlayer && __instance.gameObject.name.Contains("Ugandan_Knuckles") && __instance.m_nview.IsOwner())
-                {
-                    __instance.ResetPatrolPoint();
-                    __instance.SetFollowTarget(Player.m_localPlayer.gameObject);
-                }
-
-
+                __instance.ResetPatrolPoint();
+                __instance.SetFollowTarget(Player.m_localPlayer.gameObject);
             }
-
         }
-    }		
+    }
+            
+        public class DestroyOnCollision : MonoBehaviour
+        {
+            private void OnTriggerEnter(Collider other)
+            {
+                if (other.gameObject.GetComponent<Player>() is not null)
+                {
+                    gameObject.transform.parent.gameObject.GetComponent<Character>().OnDeath();
+                }
+            }
+        }
+    }
