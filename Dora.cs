@@ -108,54 +108,41 @@ namespace MemeHeim
 
             GameObject sfx_ricardo_despawn = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_ricardo_despawn");
             GameObject vfx_ricardo_despawn = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "vfx_ricardo_despawn");
-            GameObject Ricardo = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Ricardo");
-            MemeSpawnSystem.CustomSpawnerManager.RegisterSpawner(new MemeSpawnSystem.CustomSpawnerConfig
-            {
-                Name = "Ricardo",
-                Prefab = Ricardo,
-                Biome = Heightmap.Biome.Meadows,
-                BiomeArea = Heightmap.BiomeArea.Median,
-                SpawnChance = 1,
-                MaxSpawned = 1,
-                SpawnInterval = 6000,
-                SpawnDistance = 10,
-                SpawnRadiusMin = 35,
-                SpawnRadiusMax = 35,
-                RequiredGlobalKey = "defeated_gdking",
-                RequiredEnvironments = new List<Heightmap.BiomeArea>(),
-                GroupSizeMin = 1,
-                GroupSizeMax = 1,
-                GroupRadius = 3,
-                SpawnAtNight = true,
-                SpawnAtDay = false,
-                MinAltitude = 0,
-                MaxAltitude = 1000,
-                MinTilt = 0,
-                MaxTilt = 35,
-                InForest = true,
-                OutsideForest = false,
-                MinOceanDepth = 0,
-                MaxOceanDepth = 0,
-                HuntPlayer = false,
-                GroundOffset = 0.5f,
-                MaxLevel = 1,
-                MinLevel = 1,
-                LevelUpMinCenterDistance = 0,
-                OverrideLevelupChance = -1,
-                Foldout = false
-            });
-
 
             Item Meme_Mt_Dew = new("doradestroyer", "Meme_Mt_Dew");
             Item Meme_Snacks = new("doradestroyer", "Meme_Snacks");
-
             Item Thomas_Joint = new("doradestroyer", "Thomas_Joint");
             Thomas_Joint.Crafting.Add(CraftingTable.Workbench, 2);
             Thomas_Joint.RequiredItems.Add("Wood", 5);
             Thomas_Joint.RequiredItems.Add("Resin", 2);
             Thomas_Joint.CraftAmount = 1;
 
-            Creature Dora_The_Destroyer = new("doradestroyer", "Dora_The_Destroyer")            //add creature
+
+
+            //add creature
+
+            Creature Ricardo = new("doradestroyer", "Ricardo")           
+            {
+                Biome = Heightmap.Biome.Meadows,
+                RequiredGlobalKey = GlobalKey.KilledElder,
+                CanBeTamed = false,
+                CreatureFaction = Character.Faction.Boss,
+                CanSpawn = true,
+                SpawnChance = 1,
+                GroupSize = new Range(1, 1),
+                CheckSpawnInterval = 6000,
+                SpecificSpawnTime = SpawnTime.Night,
+                SpecificSpawnArea = CreatureManager.SpawnArea.Everywhere,
+                ForestSpawn = Forest.Yes,
+                Maximum = 1
+            };
+            Ricardo.Drops["Meme_Mt_Dew"].Amount = new Range(1, 1);
+            Ricardo.Drops["Meme_Mt_Dew"].DropChance = 50f;
+            Ricardo.Drops["Meme_Snacks"].Amount = new Range(1, 1);
+            Ricardo.Drops["Meme_Snacks"].DropChance = 50f;
+
+
+            Creature Dora_The_Destroyer = new("doradestroyer", "Dora_The_Destroyer")           
 			{
 				Biome = Heightmap.Biome.BlackForest,
                 CanBeTamed = true,
@@ -177,7 +164,7 @@ namespace MemeHeim
             Dora_The_Destroyer.Drops["Coins"].Amount = new Range(10, 20);
             Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
 
-            Creature Thomas_The_Hate_Engine = new("doradestroyer", "Thomas_The_Hate_Engine")            //add creature
+            Creature Thomas_The_Hate_Engine = new("doradestroyer", "Thomas_The_Hate_Engine")           
             {
                 Biome = Heightmap.Biome.Plains,
                 CanBeTamed = true,
@@ -200,7 +187,7 @@ namespace MemeHeim
             Dora_The_Destroyer.Drops["Coins"].Amount = new Range(50, 80);
             Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
 
-            Creature SpongeBob_Angry_Pants = new("doradestroyer", "SpongeBob_Angry_Pants")            //add creature
+            Creature SpongeBob_Angry_Pants = new("doradestroyer", "SpongeBob_Angry_Pants")           
             {
                 Biome = Heightmap.Biome.Meadows,
                 CanBeTamed = true,
@@ -222,7 +209,7 @@ namespace MemeHeim
             Dora_The_Destroyer.Drops["Coins"].Amount = new Range(5, 10);
             Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
 
-            Creature Shrek_Elite = new("doradestroyer", "Shrek_Elite")            //add creature
+            Creature Shrek_Elite = new("doradestroyer", "Shrek_Elite")        
             {
                 Biome = Heightmap.Biome.Swamp,
                 CanBeTamed = true,
@@ -244,7 +231,7 @@ namespace MemeHeim
             Dora_The_Destroyer.Drops["Coins"].Amount = new Range(20, 30);
             Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
 
-            Creature Evil_Pepe = new("doradestroyer", "Evil_Pepe")            //add creature
+            Creature Evil_Pepe = new("doradestroyer", "Evil_Pepe")            
             {
                 Biome = Heightmap.Biome.Mountain,
                 CanBeTamed = true,
@@ -266,7 +253,7 @@ namespace MemeHeim
             Dora_The_Destroyer.Drops["Coins"].Amount = new Range(30, 40);
             Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
 
-            Creature Big_Smoke = new("doradestroyer", "Big_Smoke")            //add creature
+            Creature Big_Smoke = new("doradestroyer", "Big_Smoke")            
             {
                 Biome = Heightmap.Biome.Mistlands,
                 CanBeTamed = true,
@@ -288,7 +275,7 @@ namespace MemeHeim
             Dora_The_Destroyer.Drops["Coins"].Amount = new Range(50, 60);
             Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
 
-            Creature Ugandan_Knuckles = new("doradestroyer", "Ugandan_Knuckles")            //add creature
+            Creature Ugandan_Knuckles = new("doradestroyer", "Ugandan_Knuckles")            
             {
                 Biome = Heightmap.Biome.Mistlands,
                 CanBeTamed = true,
@@ -315,8 +302,6 @@ namespace MemeHeim
             harmony.PatchAll(assembly);
         }
     }
-
-
 
     [HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.Start))]
             static class MonsterAI_Start_Patch
