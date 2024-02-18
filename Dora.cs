@@ -145,8 +145,7 @@ namespace MemeHeim
                 Foldout = false
             });
 
-            GameObject vfx_mt_dew_drink = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "vfx_mt_dew_drink");
-            GameObject sfx_mt_dew_drink = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_mt_dew_drink");
+
             Item Meme_Mt_Dew = new("doradestroyer", "Meme_Mt_Dew");
             Item Meme_Snacks = new("doradestroyer", "Meme_Snacks");
 
