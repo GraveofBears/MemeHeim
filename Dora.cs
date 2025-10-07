@@ -17,7 +17,7 @@ namespace MemeHeim
     public class MemeHeim : BaseUnityPlugin
     {
         private const string ModName = "MemeHeim";
-        private const string ModVersion = "0.0.6";
+        private const string ModVersion = "0.1.2";
         private const string ModGUID = "org.bepinex.plugins.memeheim";
 
         private static readonly ConfigSync configSync = new(ModName) { DisplayName = ModName, CurrentVersion = ModVersion, MinimumRequiredVersion = ModVersion };
@@ -80,6 +80,7 @@ namespace MemeHeim
             GameObject Shrek_Onion_Projectile = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "Shrek_Onion_Projectile");
 
             GameObject sfx_pepe_alerted = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_alerted");
+            GameObject vfx_pepe_hearts = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "vfx_pepe_hearts");
             GameObject sfx_pepe_attack = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_attack");
             GameObject sfx_pepe_death = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_death");
             GameObject sfx_pepe_hit = ItemManager.PrefabManager.RegisterPrefab("doradestroyer", "sfx_pepe_hit");
@@ -184,12 +185,12 @@ namespace MemeHeim
                 Maximum = 1
 
             };
-            Dora_The_Destroyer.Drops["Amber"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Amber"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Ruby"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Ruby"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Coins"].Amount = new Range(50, 80);
-            Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
+            Thomas_The_Hate_Engine.Drops["Amber"].Amount = new Range(1, 2);
+            Thomas_The_Hate_Engine.Drops["Amber"].DropChance = 100f;
+            Thomas_The_Hate_Engine.Drops["Ruby"].Amount = new Range(1, 2);
+            Thomas_The_Hate_Engine.Drops["Ruby"].DropChance = 100f;
+            Thomas_The_Hate_Engine.Drops["Coins"].Amount = new Range(50, 80);
+            Thomas_The_Hate_Engine.Drops["Coins"].DropChance = 100f;
 
             Creature SpongeBob_Angry_Pants = new("doradestroyer", "SpongeBob_Angry_Pants")           
             {
@@ -206,12 +207,12 @@ namespace MemeHeim
                 SpecificSpawnTime = SpawnTime.Day,
                 Maximum = 4
             };
-            Dora_The_Destroyer.Drops["Amber"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Amber"].DropChance = 50f;
-            Dora_The_Destroyer.Drops["Ruby"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Ruby"].DropChance = 50f;
-            Dora_The_Destroyer.Drops["Coins"].Amount = new Range(5, 10);
-            Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
+            SpongeBob_Angry_Pants.Drops["Amber"].Amount = new Range(1, 2);
+            SpongeBob_Angry_Pants.Drops["Amber"].DropChance = 50f;
+            SpongeBob_Angry_Pants.Drops["Ruby"].Amount = new Range(1, 2);
+            SpongeBob_Angry_Pants.Drops["Ruby"].DropChance = 50f;
+            SpongeBob_Angry_Pants.Drops["Coins"].Amount = new Range(5, 10);
+            SpongeBob_Angry_Pants.Drops["Coins"].DropChance = 100f;
 
             Creature Shrek_Elite = new("doradestroyer", "Shrek_Elite")        
             {
@@ -226,14 +227,15 @@ namespace MemeHeim
                 GroupSize = new Range(1, 2),
                 CheckSpawnInterval = 1200,
                 SpecificSpawnTime = SpawnTime.Always,
+                RequiredAltitude = new Range(0,1000),               
                 Maximum = 1
             };
-            Dora_The_Destroyer.Drops["Amber"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Amber"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Ruby"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Ruby"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Coins"].Amount = new Range(20, 30);
-            Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
+            Shrek_Elite.Drops["Amber"].Amount = new Range(1, 2);
+            Shrek_Elite.Drops["Amber"].DropChance = 100f;
+            Shrek_Elite.Drops["Ruby"].Amount = new Range(1, 2);
+            Shrek_Elite.Drops["Ruby"].DropChance = 100f;
+            Shrek_Elite.Drops["Coins"].Amount = new Range(20, 30);
+            Shrek_Elite.Drops["Coins"].DropChance = 100f;
 
             Creature Evil_Pepe = new("doradestroyer", "Evil_Pepe")            
             {
@@ -250,12 +252,12 @@ namespace MemeHeim
                 SpecificSpawnTime = SpawnTime.Always,
                 Maximum = 1
             };
-            Dora_The_Destroyer.Drops["Amber"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Amber"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Ruby"].Amount = new Range(1, 2);
-            Dora_The_Destroyer.Drops["Ruby"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Coins"].Amount = new Range(30, 40);
-            Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
+            Evil_Pepe.Drops["Amber"].Amount = new Range(1, 2);
+            Evil_Pepe.Drops["Amber"].DropChance = 100f;
+            Evil_Pepe.Drops["Ruby"].Amount = new Range(1, 2);
+            Evil_Pepe.Drops["Ruby"].DropChance = 100f;
+            Evil_Pepe.Drops["Coins"].Amount = new Range(30, 40);
+            Evil_Pepe.Drops["Coins"].DropChance = 100f;
 
             Creature Big_Smoke = new("doradestroyer", "Big_Smoke")            
             {
@@ -272,21 +274,21 @@ namespace MemeHeim
                 SpecificSpawnTime = SpawnTime.Always,
                 Maximum = 1
             };
-            Dora_The_Destroyer.Drops["Amber"].Amount = new Range(2, 3);
-            Dora_The_Destroyer.Drops["Amber"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Ruby"].Amount = new Range(2, 3);
-            Dora_The_Destroyer.Drops["Ruby"].DropChance = 10f;
-            Dora_The_Destroyer.Drops["Coins"].Amount = new Range(50, 60);
-            Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
+            Big_Smoke.Drops["Amber"].Amount = new Range(2, 3);
+            Big_Smoke.Drops["Amber"].DropChance = 100f;
+            Big_Smoke.Drops["Ruby"].Amount = new Range(2, 3);
+            Big_Smoke.Drops["Ruby"].DropChance = 10f;
+            Big_Smoke.Drops["Coins"].Amount = new Range(50, 60);
+            Big_Smoke.Drops["Coins"].DropChance = 100f;
 
             Creature Ugandan_Knuckles = new("doradestroyer", "Ugandan_Knuckles")            
             {
-                Biome = Heightmap.Biome.Mistlands,
+                Biome = Heightmap.Biome.AshLands,
                 CanBeTamed = true,
                 FoodItems = "Thomas_Joint, Meme_Mt_Dew, Meme_Snacks",
                 FedDuration = 600,
                 TamingTime = 1200,
-                CreatureFaction = Character.Faction.Dverger,
+                CreatureFaction = Character.Faction.Demon,
                 CanSpawn = true,
                 SpawnChance = 15,
                 GroupSize = new Range(3, 4),
@@ -294,12 +296,12 @@ namespace MemeHeim
                 SpecificSpawnTime = SpawnTime.Always,
                 Maximum = 4
             };
-            Dora_The_Destroyer.Drops["Amber"].Amount = new Range(2, 3);
-            Dora_The_Destroyer.Drops["Amber"].DropChance = 100f;
-            Dora_The_Destroyer.Drops["Ruby"].Amount = new Range(2, 3);
-            Dora_The_Destroyer.Drops["Ruby"].DropChance = 10f;
-            Dora_The_Destroyer.Drops["Coins"].Amount = new Range(50, 60);
-            Dora_The_Destroyer.Drops["Coins"].DropChance = 100f;
+            Ugandan_Knuckles.Drops["Amber"].Amount = new Range(2, 3);
+            Ugandan_Knuckles.Drops["Amber"].DropChance = 100f;
+            Ugandan_Knuckles.Drops["Ruby"].Amount = new Range(2, 3);
+            Ugandan_Knuckles.Drops["Ruby"].DropChance = 10f;
+            Ugandan_Knuckles.Drops["Coins"].Amount = new Range(50, 60);
+            Ugandan_Knuckles.Drops["Coins"].DropChance = 100f;
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             Harmony harmony = new(ModGUID);
