@@ -67,10 +67,6 @@
     <Reference Include="BepInEx">
       <HintPath>..\..\..\Steam\steamapps\common\Valheim-ptr\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="CreatureManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\CreatureManager.dll</HintPath>
-    </Reference>
     <Reference Include="ItemManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ItemManager.dll</HintPath>
@@ -111,6 +107,9 @@
     <Reference Include="UnityEngine.ImageConversionModule">
       <HintPath>..\..\..\Steam\steamapps\common\Valheim-ptr\unstripped_corlib\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\Steam\steamapps\common\Valheim\valheim_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
       <HintPath>..\..\..\Steam\steamapps\common\Valheim-ptr\unstripped_corlib\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
@@ -131,11 +130,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreatureManager.cs" />
     <Compile Include="Dora.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CreatureManager.dll" />
     <Content Include="ILRepack.targets" />
     <Content Include="ItemManager.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
